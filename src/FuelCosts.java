@@ -6,7 +6,7 @@ public class FuelCosts {
         double priceForGallon = 0;
         double fuelEfficiency = 0;
         double gallonsOfFuel = 0;
-        double cost4Per100;
+        double costPer100;
         double distanceLeft;
         boolean fuelValid = false;
         boolean mpgValid = false;
@@ -30,7 +30,7 @@ public class FuelCosts {
 
         do {
             System.out.println("Enter your mpg");
-            if(scan.hasNextDouble()) {
+            if (scan.hasNextDouble()) {
                 fuelEfficiency = scan.nextDouble();
                 if (fuelEfficiency > 0 && fuelEfficiency <= 14573) {
                     mpgValid = true;
@@ -42,32 +42,24 @@ public class FuelCosts {
                 scan.nextLine();
                 System.out.println("You have entered a wrong data type");
             }
-        while (!mpgValid);
-
-                            System.out.println("Enter hi current Price for Gallon of Gas");
-                            if(scan.hasNextDouble()){
-                                priceForGallon = scan.nextDouble();
-                                if(priceForGallon > 0){
-                                    valid = true;
-                                } else {
-                                    System.out.println("You have entered the wrong data type");
-                                }
-                            } else {
-                                scan.nextLine();
-                                System.out.println("You have entered in the wrong data type");
-                            }
-                        } else {
-                            System.out.println("You have entered the wrong range");
-                        }
-                    } else {
-                        scan.nextLine();
-                        System.out.println("You have entered in a wrong data type");
-                    }
+        } while (!mpgValid);
+        do {
+            System.out.println("Enter hi current Price for Gallon of Gas");
+            if(scan.hasNextDouble()){
+                priceForGallon = scan.nextDouble();
+                if(priceForGallon > 0){
+                    priceValid = true;
                 } else {
-                    System.out.println("You have entered in a wrong range");
-
+                    System.out.println("You have entered the wrong data type");
                 }
-        } while (!valid);
+            } else {
+                scan.nextLine();
+                System.out.println("You have entered in the wrong data type");
+            }
+
+        } while(!priceValid);
+
+
 
         distanceLeft = gallonsOfFuel * fuelEfficiency;
         costPer100 = 100/fuelEfficiency*priceForGallon;
